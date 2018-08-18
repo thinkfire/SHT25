@@ -1,9 +1,15 @@
 #include <Arduino.h>
+#include <SHT25.h>
+
+SHT25 RH_SENS;
 
 void setup() {
-    // put your setup code here, to run once:
+    Serial.begin(9600);
+    if(RH_SENS.begin()){
+      Serial.println("Begin Successful!");
+    }else{Serial.println("Begin Failed!");}
 }
 
 void loop() {
-    // put your main code here, to run repeatedly:
+
 }
