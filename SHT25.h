@@ -16,9 +16,13 @@
 #define RH_NO_HOLD    0xF5 //trigger RH measurement with no hold master
 #define W_UREG        0xE6 //write user registers
 #define R_UREG        0xE7 //read user registers
-#define SOFT_RESET         0xFE //soft reset
-#define RES_RH 12
-#define RES_T 14
+#define SOFT_RESET    0xFE //soft reset
+
+#define RH_Delay      29 //for 12 bit resolution
+#define T_Delay       85 //for 14 bit resolution
+#define is_RH         1
+#define is_TEMP       0
+
 
 class SHT25{
   public:
@@ -29,9 +33,7 @@ class SHT25{
 
   private:
     float TEMP, RH;
-    unsigned int S_T, S_RH;
-    int RH_Delay, T_Delay;
+    float S_T, S_RH;
     char resetSensor(void);
-    char readByte(char CMD, unsigned int &value, char length);
-    void selectDelay(char CMD, char RES);
+    char readByte(char CMD, float &value, char length, char para);
 };

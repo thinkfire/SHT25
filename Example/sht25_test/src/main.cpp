@@ -11,9 +11,9 @@ void setup() {
 }
 
 void loop() {
-
-  Serial.println(RH_SENS.getHumidity(),2);
-
-  delay(5000);
-
+    Serial.print("RH   - ");
+    Serial.println(RH_SENS.getHumidity(),5);
+    Serial.print("TEMP - ");
+    Serial.println(RH_SENS.getTemperature(),5);
+    delay(5000);
 }
