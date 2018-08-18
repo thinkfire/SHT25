@@ -17,7 +17,8 @@
 #define W_UREG        0xE6 //write user registers
 #define R_UREG        0xE7 //read user registers
 #define SOFT_RESET         0xFE //soft reset
-
+#define RES_RH 12
+#define RES_T 14
 class SHT25{
   public:
     SHT25();
@@ -30,7 +31,9 @@ class SHT25{
 
   private:
     float TEMP, RH;
-    float S_T, S_RH;
+    unsigned int S_T, S_RH;
+    int RH_Delay, T_Delay;
     char resetSensor(void);
-
+    char readByte(char CMD, unsigned int &value, char length);
+    int selectDelay(char CMD, char RES);
 };
