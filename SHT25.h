@@ -20,6 +20,7 @@
 
 class SHT25{
   public:
+    SHT25();
     char begin(void);
     readUserReg(void);
     char writeUserReg(void);
