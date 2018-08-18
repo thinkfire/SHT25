@@ -14,8 +14,8 @@ SHT25::SHT25(){
 char SHT25::begin(){
   Wire.begin();
   if(resetSensor()){
-    RH_Delay = selectDelay(RH_NO_HOLD, RES_RH);
-    T_Delay  = selectDelay(T_NO_HOLD, RES_T);
+    selectDelay(RH_NO_HOLD, RES_RH);
+    selectDelay(T_NO_HOLD, RES_T);
     return 1;
   }else{return 0;}
 }
@@ -30,7 +30,7 @@ char SHT25::resetSensor(){
   }else{return 0;}
 }
 
-float SHT25::getHumidity(){
+float SHT25::getHumidity(void){
   if(readByte(RH_NO_HOLD, S_RH, 3)){
     return 1.0;
   }else{return 0.1;}
@@ -76,7 +76,7 @@ char SHT25::readByte(char CMD, unsigned int &value, char length){
   }else{return 0;}
 }
 
-int SHT25::selectDelay(char CMD, char RES){
+void SHT25::selectDelay(char CMD, char RES){
   switch (CMD) {
     case T_NO_HOLD:
       switch (RES) {
