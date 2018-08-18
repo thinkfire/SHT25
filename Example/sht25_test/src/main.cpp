@@ -12,4 +12,8 @@ void setup() {
 
 void loop() {
 
+  Serial.println(RH_SENS.getHumidity(),2);
+
+  delay(5000);
+
 }
