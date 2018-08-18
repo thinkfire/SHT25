@@ -19,15 +19,13 @@
 #define SOFT_RESET         0xFE //soft reset
 #define RES_RH 12
 #define RES_T 14
+
 class SHT25{
   public:
     SHT25();
     char begin(void);
-    readUserReg(void);
-    char writeUserReg(void);
     float getTemperature(void);
     float getHumidity(void);
-
 
   private:
     float TEMP, RH;
@@ -35,5 +33,5 @@ class SHT25{
     int RH_Delay, T_Delay;
     char resetSensor(void);
     char readByte(char CMD, unsigned int &value, char length);
-    int selectDelay(char CMD, char RES);
+    void selectDelay(char CMD, char RES);
 };
