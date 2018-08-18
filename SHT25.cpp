@@ -19,7 +19,7 @@ char SHT25::begin(){
 }
 
 char SHT25::resetSensor(){
-  Wire.beginTransmission();
+  Wire.beginTransmission(SHT25_ADDR);
   Wire.write(SOFT_RESET);
   char error = Wire.endTransmission();
   if(error == 0){
