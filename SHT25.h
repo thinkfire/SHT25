@@ -24,12 +24,14 @@
 #define is_TEMP       0
 
 
+
 class SHT25{
   public:
     SHT25();
     char begin(void);
     float getTemperature(void);
     float getHumidity(void);
+    const float RH_ERROR = 101.0,T_RH_ERROR = 126.0;
 
   private:
     float TEMP, RH;

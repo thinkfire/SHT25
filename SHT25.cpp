@@ -32,14 +32,14 @@ float SHT25::getHumidity(void){
   if(readByte(RH_NO_HOLD, S_RH, 3, is_RH)){
     RH = -6.0 + 125.0*(S_RH/((long)1<<16));
     return RH;
-  }else{return 0;}
+  }else{return RH_ERROR;}
 }
 
 float SHT25::getTemperature(){
   if(readByte(T_NO_HOLD, S_T, 3, is_TEMP)){
     TEMP = -46.85 + 175.72*(S_T/((long)1<<16));
     return TEMP;
-  }else{return 0;}
+  }else{return T_RH_ERROR;}
 }
 
 char SHT25::readByte(char CMD, float &value, char length, char para){
